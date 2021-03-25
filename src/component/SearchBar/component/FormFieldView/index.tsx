@@ -1,6 +1,7 @@
 import { Row, Col } from 'antd';
 import InputItemView from '../InputItemView';
 import SelectItemView from '../SelectItemView';
+import { SEARCH_TYPE } from '@/utils/constant/compConstant';
 
 // TODO: options type
 export interface SearchOptionsItemType {
@@ -29,10 +30,10 @@ const FormFieldView = (props: FormFieldViewPropsType) => {
         <Row gutter={rowSpan}>
             {itemKeys.map((key) => (
                 <Col span={colSpan} key={key}>
-                    {items[key].type === 'input' && (
+                    {items[key].type === SEARCH_TYPE.INPUT && (
                         <InputItemView params={items[key]} name={key} />
                     )}
-                    {items[key].type === 'select' && (
+                    {items[key].type === SEARCH_TYPE.SELECT && (
                         <SelectItemView params={items[key]} name={key} />
                     )}
                 </Col>
