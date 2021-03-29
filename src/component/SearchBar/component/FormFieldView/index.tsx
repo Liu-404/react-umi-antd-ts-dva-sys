@@ -1,19 +1,15 @@
 import { Row, Col } from 'antd';
 import InputItemView from '../InputItemView';
 import SelectItemView from '../SelectItemView';
-import { SEARCH_TYPE } from '@/utils/constant/compConstant';
-
-// TODO: options type
-export interface SearchOptionsItemType {
-    [key: string]: string | number;
-}
+import { SEARCH_TYPE } from '@/utils/constants/compConstant';
 
 // TODO: items type
 export interface SearchItemType {
-    type: string;
+    type: number;
     label: string;
     placeholder?: string;
-    options?: SearchOptionsItemType[];
+    options?: any;
+    optionType?: number;
 }
 
 export interface FormFieldViewPropsType {
