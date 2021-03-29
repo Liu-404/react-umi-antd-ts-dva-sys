@@ -1,7 +1,4 @@
-import {
-    SEARCH_TYPE,
-    SEARCH_OPTION_TYPE,
-} from '@/utils/constants/compConstant';
+import { SEARCH_TYPE } from '@/utils/constants/compConstant';
 
 export const DEVICE_SEARCH_PARAMS = {
     projectName: {
@@ -38,14 +35,13 @@ export const DEVICE_SEARCH_PARAMS = {
         type: SEARCH_TYPE.SELECT,
         label: '测试',
         placeholder: '请选择',
-        options: [
-            { value: 1, text: 'A' },
-            { value: 2, text: 'B' },
-        ],
-        // options: {
-        //     A: 'A',
-        //     B: 'B',
-        // },
-        // optionType: SEARCH_OPTION_TYPE.OBJECT,
+        // options: [
+        //     { value: 1, text: 'A' },
+        //     { value: 2, text: 'B' },
+        // ],
+        options: {
+            0: 'A',
+            1: 'B',
+        },
     },
 };

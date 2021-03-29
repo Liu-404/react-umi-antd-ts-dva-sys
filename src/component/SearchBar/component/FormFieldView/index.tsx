@@ -9,7 +9,8 @@ export interface SearchItemType {
     label: string;
     placeholder?: string;
     options?: any;
-    optionType?: number;
+    optionText?: string;
+    optionValue?: string;
 }
 
 export interface FormFieldViewPropsType {

@@ -9,10 +9,10 @@ export interface SelectItemViewPropsType {
 
 const SelectItemView = (props: SelectItemViewPropsType) => {
     const { params, name } = props;
-    const { label, placeholder, options, optionType } = params;
+    const { label, placeholder, options, optionText, optionValue } = params;
 
     /* TODO: 处理 数组options */
-    const optionList = useOptionList(optionType, options);
+    const optionList = useOptionList(options, optionText, optionValue);
 
     return (
         <Form.Item label={label} name={name}>
