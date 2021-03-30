@@ -7,7 +7,7 @@ import DateRangePickerItemView from '../DateRangePickerItemView';
 import InputNumberItemView from '../InputNumberItemView';
 import TimePickerItemView from '../TimePickerItemView';
 import TimeRangePickerItemView from '../TimeRangePickerItemView';
-import { SEARCH_TYPE } from '@/utils/constants/compConstant';
+import { SEARCH_TYPE } from '@/utils/constants/enum';
 
 export interface SearchItemType {
     type: number;

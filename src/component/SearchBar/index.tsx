@@ -6,8 +6,6 @@ import useObserver from '@/utils/hooks/useObserver';
 import useColSpan from './hooks/useColSpan';
 import useVisibleItems from './hooks/useVisibleItems';
 
-type SizeType = Parameters<typeof Form>[0]['size'];
-
 export interface SearchBarPropsType {
     searchBtnText?: string; // submit button text
     resetBtnText?: string; // clear button text
@@ -20,11 +18,8 @@ export interface SearchBarPropsType {
     submitBtnStyle?: CSSProperties; // submit btn style
     clearBtnStyle?: CSSProperties; // clear btn style
     expandBtnStyle?: CSSProperties; // expand btn style
-    size?: SizeType; // form size
     onSearch: (val: {}) => void; // return form value
-    /* -----antd form API------ */
-    colon?: boolean;
-    preserve?: boolean;
+    formParams?: {};
 }
 
 const defaultSearchBarProps = {
@@ -41,8 +36,6 @@ const defaultSearchBarProps = {
     },
     clearBtnStyle: {},
     expandBtnStyle: { marginLeft: '12px' },
-    colon: true,
-    preserve: true,
 };
 
 const SearchBar = (props: SearchBarPropsType) => {
@@ -61,10 +54,8 @@ const SearchBar = (props: SearchBarPropsType) => {
         submitBtnStyle,
         clearBtnStyle,
         expandBtnStyle,
-        colon,
-        preserve,
-        size,
         onSearch,
+        formParams,
     } = params;
 
     const [expand, setExpand] = useState(false);
@@ -113,13 +104,7 @@ const SearchBar = (props: SearchBarPropsType) => {
 
     return (
         <div ref={searchBoxRef}>
-            <Form
-                form={form}
-                onFinish={handleSearch}
-                colon={colon}
-                preserve={preserve}
-                size={size as SizeType}
-            >
+            <Form form={form} onFinish={handleSearch} {...formParams}>
                 <FormFieldView
                     itemKeys={itemKeys}
                     items={searchItems}

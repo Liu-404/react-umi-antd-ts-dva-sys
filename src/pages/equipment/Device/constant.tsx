@@ -1,4 +1,4 @@
-import { SEARCH_TYPE } from '@/utils/constants/compConstant';
+import { SEARCH_TYPE } from '@/utils/constants/enum';
 
 export const DEVICE_SEARCH_PARAMS = {
     projectName: {
