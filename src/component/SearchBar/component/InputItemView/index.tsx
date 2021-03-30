@@ -1,17 +1,12 @@
 import { Form, Input } from 'antd';
-import { SearchItemType } from '../FormFieldView';
+import { IFormItemBasicProps } from '../FormFieldView';
 
-export interface InputItemViewPropsType {
-    params: SearchItemType;
-    name: string;
-}
-
-const InputItemView = (props: InputItemViewPropsType) => {
+const InputItemView = (props: IFormItemBasicProps) => {
     const { params, name } = props;
-    const { label, placeholder } = params;
+    const { label, inputParams } = params;
     return (
         <Form.Item label={label} name={name}>
-            <Input placeholder={placeholder} />
+            <Input {...inputParams} />
         </Form.Item>
     );
 };

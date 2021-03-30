@@ -1,4 +1,10 @@
 export enum SEARCH_TYPE {
     INPUT,
     SELECT,
+    CASCADER,
+    DATE_PICKER,
+    DATA_RANGE_PICKER,
+    INPUT_NUMBER,
+    TIME_PICKER,
+    TIME_RANGE_PICKER,
 }
