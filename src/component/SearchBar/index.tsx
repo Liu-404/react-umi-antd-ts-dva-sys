@@ -4,7 +4,6 @@ import { UpOutlined, DownOutlined } from '@ant-design/icons';
 import FormFieldView from './component/FormFieldView';
 import useObserver from '@/utils/hooks/useObserver';
 import useColSpan from './hooks/useColSpan';
-import useVisibleItems from './hooks/useVisibleItems';
 
 export interface SearchBarPropsType {
     searchBtnText?: string; // submit button text
@@ -19,7 +18,8 @@ export interface SearchBarPropsType {
     clearBtnStyle?: CSSProperties; // clear btn style
     expandBtnStyle?: CSSProperties; // expand btn style
     onSearch: (val: {}) => void; // return form value
-    formParams?: {};
+    formParams?: any; // antd Form component params
+    initExpand?: boolean; // init expand, if the initialValues are hidden, set true
 }
 
 const defaultSearchBarProps = {
@@ -36,6 +36,7 @@ const defaultSearchBarProps = {
     },
     clearBtnStyle: {},
     expandBtnStyle: { marginLeft: '12px' },
+    initExpand: false,
 };
 
 const SearchBar = (props: SearchBarPropsType) => {
@@ -56,9 +57,10 @@ const SearchBar = (props: SearchBarPropsType) => {
         expandBtnStyle,
         onSearch,
         formParams,
+        initExpand,
     } = params;
 
-    const [expand, setExpand] = useState(false);
+    const [expand, setExpand] = useState(initExpand);
     const [searchBoxWidth, setSearchBoxWidth] = useState(0);
     const [isCancelObserve, setIsCancelObserve] = useState(false);
 
@@ -82,9 +84,10 @@ const SearchBar = (props: SearchBarPropsType) => {
     }, []);
 
     const col = useColSpan(colSpan, searchBoxWidth);
-    const itemKeys = isOpenExpand
-        ? useVisibleItems(expand, col, searchItemKeys, initRowNum)
-        : searchItemKeys;
+    const itemKeys =
+        isOpenExpand && !expand
+            ? searchItemKeys.slice(0, parseInt(`${24 / col}`) * initRowNum)
+            : searchItemKeys;
 
     const isShowExpandBtn = !(
         !expand && itemKeys.length === searchItemKeys.length
